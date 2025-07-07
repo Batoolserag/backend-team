@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latest News - Global Public Speaking Club</title>
+    <style>
+        /* (Your existing CSS unchanged) */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #111827;
+            line-height: 1.6;
+        }
+        /* ... all your other styles remain the same ... */
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+            .news-card:hover {
+                transform: translateY(-5px);
+            }
+
+        .news-card-header {
+            background: #b8d4ea;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .news-card-icon {
+            font-size: 1.2rem;
+        }
+
+        .news-card-category {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .news-card-content {
+            padding: 1.5rem;
+            background: #f9f7e8;
+        }
+
+        .news-card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .news-card-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+            .news-card-image::before {
+                content: '';
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 60px;
+                height: 80px;
+                background: #f39c12;
+                clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+            }
+
+        .news-card-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-card-excerpt {
+            color: #666;
+            line-height: 1.6;
+        }
+        /* (Other styles unchanged) */
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Global Public Speaking Club</h1>
+        <nav>
+            <a href="#" class="underline">Home</a>
+            <a href="#">About</a>
+            <a href="#">Activities</a>
+            <a href="#">Resources</a>
+            <a href="#">Community</a>
+            <a href="#" class="login">Login</a>
+            <a href="#" class="register">Register</a>
+            <a href="#" class="flag-button">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English" />
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <h1 class="page-title">Latest News</h1>
+
+        <!-- Featured Article (unchanged) -->
+        <article class="featured-article">
+            <img src="https://images.forbesindia.com/media/images/2016/Aug/topimg_32217_audience.jpg?impolicy=website&width=900&height=600" alt="news image" />
+            <div class="featured-content">
+                <h2 class="featured-title">Global Public Speaking Club Reaches 10,000 Members Milestone</h2>
+                <div class="featured-meta">June 18, 2025 • 3 min read</div>
+                <p class="featured-excerpt">We're thrilled to announce that our community has grown to over 10,000 active members across 52 countries. This incredible milestone reflects our shared commitment to empowering voices worldwide and creating meaningful connections through the art of public speaking...</p>
+                <a href="#" class="read-more-btn">Read Full Article</a>
+            </div>
+        </article>
+
+        <!-- News Grid container with ID for JS -->
+        <div id="news-grid" class="news-grid">
+            <!-- News cards will be inserted here dynamically -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-section">
+            <h4>Global Public Speaking Club</h4>
+            <em>Empowering voices. Connecting the world.</em>
+            <img class="logo" src="https://i.imghippo.com/files/pwO2415cdc.png" alt="GPS Club Logo" />
+        </div>
+        <div class="footer-section" style="text-align:center;">
+            <h4>Quick Links</h4>
+            <a href="#">About</a>
+            <a href="#">Activities</a>
+            <a href="#">Resources</a>
+            <a href="#">Community</a>
+        </div>
+
+        <div class="footer-section contact">
+            <h4>Contact Us</h4>
+            <p>Email: support@gpsclub.org</p>
+            <p>Location: 26 Voice Tower, Innovation Park,<br />Dubai Knowledge Village, UAE</p>
+            <p>Phone: +971 4 123 4567</p>
+            <p>Support Hours: Sunday – Thursday, 9:00 AM – 5:00 PM</p>
+            <div class="social-icons">
+                <span>Stay Connected</span>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png" alt="Facebook" /></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn" /></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" /></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Your existing JS + new dynamic news loading -->
+    <script>
+        // Dynamic news loader function
+        async function loadNews() {
+            const newsGrid = document.getElementById('news-grid');
+
+            try {
+                const response = await fetch('/api/news'); // Your backend endpoint
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                const newsList = await response.json();
+
+                // Clear container before inserting new cards
+                newsGrid.innerHTML = '';
+
+                // Build news cards dynamically
+                newsList.forEach(news => {
+                    const card = document.createElement('article');
+                    card.className = 'news-card';
+
+                    card.innerHTML = `
+                <div class="news-card-header">
+                  <span class="news-card-icon">📰</span>
+                  <span class="news-card-category">${news.category || 'News'}</span>
+                </div>
+                <div class="news-card-content">
+                  <h3 class="news-card-title">${news.title}</h3>
+                  <div class="news-card-image" style="background-image: url('${news.image || 'https://via.placeholder.com/400x150'}');"></div>
+                  <div class="news-card-meta">${news.date} • ${news.readTime || '3 min read'}</div>
+                  <p class="news-card-excerpt">${news.excerpt}</p>
+                </div>
+              `;
+
+                    newsGrid.appendChild(card);
+                });
+
+                // Add hover effect and click handlers for read more if needed
+                const newsCards = document.querySelectorAll('.news-card');
+                newsCards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transform = 'translateY(-10px)';
+                        card.style.boxShadow = '0 15px 30px rgba(0,0,0,0.2)';
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'translateY(0)';
+                        card.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+                    });
+                    // Example: add click listener for each card or a read more button here if your data has URLs
+                    // card.querySelector('.read-more-btn').addEventListener('click', e => { ... });
+                });
+
+            } catch (error) {
+                console.error('Error loading news:', error);
+                newsGrid.innerHTML = '<p style="color:red;">Failed to load news. Please try again later.</p>';
+            }
+        }
+
+        // Load news once DOM is fully loaded
+        window.addEventListener('DOMContentLoaded', loadNews);
+    </script>
+
+    <script>
+        // Your existing scripts for smooth scrolling, navigation toggle, etc.
+
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Responsive navigation toggle for mobile
+        const navMenu = document.querySelector('nav');
+        const header = document.querySelector('header');
+
+        const mobileToggle = document.createElement('button');
+        mobileToggle.innerHTML = '☰';
+        mobileToggle.style.cssText = `
+          display: none;
+          background: none;
+          border: none;
+          font-size: 1.5rem;
+          color: #333;
+          cursor: pointer;
+          padding: 0.5rem;
+        `;
+
+        const mobileStyles = document.createElement('style');
+        mobileStyles.textContent = `
+          @media (max-width: 768px) {
+            button.mobile-toggle {
+              display: block !important;
+            }
+            nav {
+              display: none;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              right: 0;
+              background: #b8d4ea;
+              flex-direction: column;
+              padding: 1rem;
+              box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            nav.active {
+              display: flex !important;
+            }
+          }
+        `;
+        document.head.appendChild(mobileStyles);
+
+        mobileToggle.className = 'mobile-toggle';
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        header.insertBefore(mobileToggle, navMenu);
+
+    </script>
+</body>
+</html>

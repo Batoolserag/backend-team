@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Public Speaking Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #cce6ff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            header h1 {
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+            nav a {
+                margin-left: 20px;
+                text-decoration: none;
+                color: #111827;
+                font-weight: 500;
+                position: relative;
+            }
+
+                nav a.underline {
+                    text-decoration: underline;
+                    font-weight: 600;
+                }
+
+                nav a.login {
+                    background-color: #1e3a8a;
+                    color: white;
+                    padding: 6px 12px;
+                    border-radius: 6px;
+                    margin-left: 20px;
+                }
+
+                nav a.register {
+                    background-color: #facc15;
+                    padding: 6px 12px;
+                    border-radius: 6px;
+                    font-weight: 600;
+                    margin-left: 10px;
+                }
+
+                nav a.flag-button {
+                    margin-left: 15px;
+                    display: inline-block;
+                    padding: 4px;
+                    border-radius: 4px;
+                    background-color: transparent;
+                }
+
+                    nav a.flag-button img {
+                        width: 30px;
+                    }
+
+        .hero {
+            background-image: url('https://img.freepik.com/premium-photo/engaging-interview-conversation-stage-with-microphones_274679-56414.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            color: white;
+            padding: 0 20px;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 1;
+            }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 2rem;
+            white-space: nowrap;
+            max-width: 100%;
+        }
+
+        .resources {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 5%;
+            gap: 3rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .resource-card {
+            flex: 1;
+            max-width: 500px;
+        }
+
+            .resource-card h2 {
+                margin-bottom: 1rem;
+                font-size: 1.8rem;
+                font-weight: 700;
+            }
+
+            .resource-card p {
+                color: #666;
+                margin-bottom: 1.5rem;
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+
+            .resource-card button {
+                background-color: #d4ecff;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1rem;
+                font-weight: 600;
+                transition: background-color 0.3s ease;
+            }
+
+                .resource-card button:hover {
+                    background-color: #b3d9ff;
+                }
+
+        .resources img {
+            flex: 1;
+            width: 100%;
+            max-width: 500px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ccc;
+            width: 60%;
+            margin: 2rem auto;
+        }
+
+        .tutorials {
+            background: white;
+            padding: 3rem 2rem;
+        }
+
+        .tutorials-content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tutorials h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 2rem;
+        }
+
+        .tutorial-layout {
+            display: flex;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .left-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .right-column {
+            flex: 1;
+            display: flex;
+        }
+
+        .tutorial {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .tutorial-img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0;
+        }
+
+        .large-tutorial .tutorial-img {
+            height: 600px;
+        }
+
+        .tutorial-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+            .tutorial-info h3 {
+                color: #000;
+                font-weight: 700;
+                margin-bottom: 0.75rem;
+                font-size: 1.1rem;
+            }
+
+        .large-tutorial h3 {
+            font-size: 1.4rem;
+        }
+
+        .tutorial-info p {
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .large-tutorial p {
+            font-size: 1.05rem;
+        }
+
+        .tutorial-info span {
+            font-size: 0.85rem;
+            color: #666;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-info button {
+            padding: 0.8rem 2rem;
+            background-color: #cce6ff;
+            color: #333;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .large-tutorial button {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .tutorial-info button:hover {
+            background-color: #b3d9ff;
+        }
+
+        .faq {
+            padding: 3rem 2rem;
+            background-color: #fff;
+            font-family: 'Inter', sans-serif;
+        }
+
+            .faq h2 {
+                font-size: 2rem;
+                font-weight: 800;
+                margin-bottom: 2rem;
+                color: #1e1e1e;
+            }
+
+        .faq-wrapper {
+            display: flex;
+            border-radius: 16px;
+            overflow: hidden;
+            background-color: #f9f8ff;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .faq-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 45%;
+            background-color: #ffffff;
+        }
+
+        .faq-item {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem 1rem;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.25s ease;
+        }
+
+            .faq-item:hover {
+                background-color: #f5f3ff;
+            }
+
+            .faq-item.active {
+                background-color: #f5f3ff;
+            }
+
+            .faq-item .dot {
+                width: 14px;
+                height: 14px;
+                background: #c4b5fd;
+                border-radius: 50%;
+                margin-right: 12px;
+                flex-shrink: 0;
+            }
+
+            .faq-item .question {
+                flex-grow: 1;
+                font-size: 0.95rem;
+                font-weight: 500;
+                color: #1e1e1e;
+            }
+
+            .faq-item .arrow {
+                font-size: 1.2rem;
+                color: #999;
+                margin-left: 10px;
+            }
+
+        .faq-answer {
+            width: 55%;
+            background-color: #f9f8ff;
+            padding: 2rem;
+            border-left: 1px solid #e4e2f0;
+        }
+
+            .faq-answer h3 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                color: #1e1e1e;
+            }
+
+            .faq-answer p {
+                font-size: 0.95rem;
+                color: #555;
+                line-height: 1.6;
+            }
+
+        footer {
+            background-color: #cce6ff;
+            padding: 30px 5%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            font-size: 0.95rem;
+            color: #1f2937;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #374151;
+            text-decoration: none;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .footer-section em {
+            display: block;
+            margin-top: 8px;
+            color: #555;
+        }
+
+        .footer-section.contact p {
+            font-style: italic;
+        }
+
+        .social-icons {
+            margin-top: 12px;
+        }
+
+            .social-icons span {
+                display: block;
+                font-weight: 600;
+                margin-bottom: 8px;
+                font-size: 1.1rem;
+            }
+
+            .social-icons a {
+                margin-right: 10px;
+                display: inline-block;
+                background-color: transparent;
+            }
+
+            .social-icons img {
+                width: 28px;
+                height: 28px;
+                filter: grayscale(100%);
+            }
+
+        .logo {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .resources {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .tutorial-layout {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                white-space: normal;
+            }
+
+            footer {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .faq-wrapper {
+                flex-direction: column;
+            }
+
+            .faq-list,
+            .faq-answer {
+                width: 100%;
+                border: none;
+            }
+
+            .faq-answer {
+                padding: 1rem 0 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Global Public Speaking Club</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Activities</a>
+            <a href="#" class="underline">Resources</a>
+            <a href="#">Community</a>
+            <a href="#" class="login">Login</a>
+            <a href="#" class="register">Register</a>
+            <a href="#" class="flag-button"><img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English" /></a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Speaking Resources Hub</h1>
+            <p>Everything you need to master the art of public speaking</p>
+        </div>
+    </section>
+
+    <!-- Guides Section -->
+    <section class="resources">
+        <div class="resource-card">
+            <h2>Complete Speaking Guides</h2>
+            <p>Step-by-step guides covering speech structure, delivery techniques, and presentation mastery</p>
+            <button>View Guides</button>
+        </div>
+        <img src="https://scontent.ftun8-1.fna.fbcdn.net/v/t39.30808-6/486711972_1053616646797676_363642490641710564_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Qk22jkmmmr8Q7kNvwHiAGyr&_nc_oc=AdkBI4Yx1h2CSOSrOKS2KmSFb_sNLw4vFTNzEU9JGDybpR-57rVEVs4unxEvCDexlF0&_nc_zt=23&_nc_ht=scontent.ftun8-1.fna&_nc_gid=ZfzZ5rIirjGNRgCiYWbyYA&oh=00_AfNczhf4sSdTE09QVGt-oaK_XA71SlvHJChcZRfDO9XFWA&oe=6860F2CE" alt="Books" />
+    </section>
+
+    <!-- Workshops Section -->
+    <section class="resources">
+        <div class="resource-card">
+            <h2>Expert Workshop Library</h2>
+            <p>Access recorded sessions from our top workshops on voice modulation, storytelling, and persuasion</p>
+            <button>Watch Videos</button>
+        </div>
+        <img src="https://www.stereophile.com/images/styles/600_wide/public/719backpage.promo_.jpg" alt="picture" />
+    </section>
+
+    <hr />
+
+    <!-- Tutorials Section -->
+    <section class="tutorials">
+        <div class="tutorials-content-wrapper">
+            <h2>Step-by-Step Tutorials</h2>
+
+            <div class="tutorial-layout">
+                <!-- Left column with two smaller tutorials -->
+                <div class="left-column">
+                    <!-- Tutorial Card 2 -->
+                    <div class="tutorial">
+                        <div class="tutorial-img" style="background-image: url('https://miro.medium.com/v2/1*v4Tq51C48FwTJ51wdDXK4g.jpeg');"></div>
+                        <div class="tutorial-info">
+                            <h3>Voice Projection & Modulation</h3>
+                            <p>Master breathing techniques and vocal variety</p>
+                            <span>20 min course | Intermediate</span>
+                            <button>Start Tutorial</button>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial Card 3 -->
+                    <div class="tutorial">
+                        <div class="tutorial-img" style="background-image: url('https://images.stockcake.com/public/2/f/9/2f90dcf6-c181-4537-85e1-6c5c6378fe40_large/confident-speaker-performing-stockcake.jpg');"></div>
+                        <div class="tutorial-info">
+                            <h3>Overcoming Stage Fright</h3>
+                            <p>Proven strategies to build confidence and calm nerves</p>
+                            <span>15 min course | All Levels</span>
+                            <button>Start Tutorial</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right column with one large tutorial -->
+                <div class="right-column">
+                    <div class="tutorial large-tutorial">
+                        <div class="tutorial-img" style="background-image: url('https://www.eventi.polimi.it/wp-content/uploads/2024/07/AdobeStock_283017482_800x600.jpg');"></div>
+                        <div class="tutorial-info">
+                            <h3>Complete Speech Structure Mastery</h3>
+                            <p>Learn the foundation of powerful presentations - from captivating openings to memorable conclusions</p>
+                            <span>45 min course | Beginner</span>
+                            <button>Start Tutorial</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-wrapper">
+            <ul class="faq-list">
+                <li class="faq-item active" onclick="showAnswer(0)">
+                    <span class="dot"></span>
+                    <span class="question">What is a Payment Gateway?</span>
+                    <span class="arrow">›</span>
+                </li>
+                <li class="faq-item" onclick="showAnswer(1)">
+                    <span class="dot"></span>
+                    <span class="question">Do I need to pay to Instapay even when there is no transaction going on in my business?</span>
+                    <span class="arrow">›</span>
+                </li>
+                <li class="faq-item" onclick="showAnswer(2)">
+                    <span class="dot"></span>
+                    <span class="question">What platforms does Instapay payment gateway support?</span>
+                    <span class="arrow">›</span>
+                </li>
+                <li class="faq-item" onclick="showAnswer(3)">
+                    <span class="dot"></span>
+                    <span class="question">Does Instapay provide international payments support?</span>
+                    <span class="arrow">›</span>
+                </li>
+                <li class="faq-item" onclick="showAnswer(4)">
+                    <span class="dot"></span>
+                    <span class="question">Is there any setup fee or annual maintainance fee that I need to pay regularly?</span>
+                    <span class="arrow">›</span>
+                </li>
+            </ul>
+
+            <div class="faq-answer">
+                <h3 id="faq-title">What is a Payment Gateway?</h3>
+                <p id="faq-text">
+                    A payment gateway is an ecommerce service that processes online payments for online as well as offline businesses.
+                    Payment gateways help accept payments by transferring key information from their merchant websites to issuing banks,
+                    card associations and online wallet players.<br /><br />
+                    Payment gateways play a vital role in the online transaction process, which is the realisation of value, and hence
+                    are seen as an important pillar of ecommerce.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-section">
+            <h4>Global Public Speaking Club</h4>
+            <em>Empowering voices. Connecting the world.</em>
+            <img class="logo" src="https://i.imghippo.com/files/pwO2415cdc.png" alt="GPS Club Logo" />
+        </div>
+        <div class="footer-section" style="text-align:center;">
+            <h4>Quick Links</h4>
+            <a href="#">About</a>
+            <a href="#">Activities</a>
+            <a href="#">Resources</a>
+            <a href="#">Community</a>
+        </div>
+
+        <div class="footer-section contact">
+            <h4>Contact Us</h4>
+            <p>Email: support@gpsclub.org</p>
+            <p>Location: 26 Voice Tower, Innovation Park,<br />Dubai Knowledge Village, UAE</p>
+            <p>Phone: +971 4 123 4567</p>
+            <p>Support Hours: Sunday – Thursday, 9:00 AM – 5:00 PM</p>
+            <div class="social-icons">
+                <span>Stay Connected</span>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png" alt="Facebook" /></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn" /></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" /></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showAnswer(index) {
+            // Remove active class from all items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Add active class to clicked item
+            document.querySelectorAll('.faq-item')[index].classList.add('active');
+
+            // Update the answer content based on index
+            const titles = [
+                "What is a Payment Gateway?",
+                "Do I need to pay to Instapay even when there is no transaction going on in my business?",
+                "What platforms does Instapay payment gateway support?",
+                "Does Instapay provide international payments support?",
+                "Is there any setup fee or annual maintainance fee that I need to pay regularly?"
+            ];
+
+            const answers = [
+                "A payment gateway is an ecommerce service that processes online payments for online as well as offline businesses. Payment gateways help accept payments by transferring key information from their merchant websites to issuing banks, card associations and online wallet players.<br /><br />Payment gateways play a vital role in the online transaction process, which is the realisation of value, and hence are seen as an important pillar of ecommerce.",
+                "No, you don't need to pay anything to Instapay when there are no transactions. Our pricing model is transaction-based, meaning you only pay when you actually process payments through our gateway.",
+                "Instapay payment gateway supports multiple platforms including web applications, mobile apps, e-commerce platforms like Shopify, WooCommerce, Magento, and custom integrations through our comprehensive API.",
+                "Yes, Instapay provides comprehensive international payment support with multi-currency processing, supporting major international credit cards, digital wallets, and local payment methods across different countries.",
+                "No, there are no setup fees or annual maintenance fees. Instapay follows a transparent, transaction-based pricing model where you only pay a small percentage per successful transaction."
+            ];
+
+            document.getElementById('faq-title').textContent = titles[index];
+            document.getElementById('faq-text').innerHTML = answers[index];
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Public Speaking Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Your existing CSS here ... */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #cce6ff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            header h1 {
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+            nav a {
+                margin: 0 10px;
+                text-decoration: none;
+                color: #111827;
+                font-weight: 500;
+            }
+
+            nav span.separator {
+                margin: 0 8px;
+                color: #999;
+            }
+
+            nav a.underline {
+                text-decoration: underline;
+                font-weight: 600;
+            }
+
+            nav a.login {
+                background-color: #7DAFD6;
+                color: black;
+                padding: 6px 20px;
+                border-radius: 50px;
+                font-weight: 600;
+            }
+
+            nav a.register {
+                background-color: #FFD700;
+                padding: 6px 20px;
+                border-radius: 50px;
+                font-weight: 600;
+                color: black;
+            }
+
+            nav button.flag-button {
+                margin-left: 15px;
+                background-color: transparent;
+                border: 50px;
+                cursor: pointer;
+            }
+
+                nav button.flag-button img {
+                    width: 30px;
+                    height: auto;
+                }
+
+        .main-section {
+            max-width: 90%;
+            margin: 60px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+            .main-section img {
+                width: 100%;
+                border-radius: 10px;
+            }
+
+            .main-section .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+                .main-section .info h2 {
+                    font-size: 1.8rem;
+                    margin-bottom: 10px;
+                }
+
+                .main-section .info p {
+                    margin: 8px 0;
+                    font-size: 1rem;
+                    color: #374151;
+                }
+
+            .main-section button {
+                background-color: #000;
+                color: white;
+                padding: 12px 24px;
+                border: none;
+                border-radius: 4px;
+                font-weight: 500;
+                margin-top: 12px;
+                cursor: pointer;
+            }
+
+        .topics {
+            max-width: 90%;
+            margin: 80px auto;
+        }
+
+            .topics h3 {
+                font-size: 1.5rem;
+                margin-bottom: 30px;
+            }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+            .card:hover {
+                transform: translateY(-4px);
+            }
+
+            .card img {
+                width: 100%;
+                height: 170px;
+                object-fit: cover;
+            }
+
+            .card .content {
+                padding: 16px;
+            }
+
+            .card h4 {
+                font-size: 1rem;
+                margin-bottom: 6px;
+                font-weight: 600;
+            }
+
+            .card p {
+                font-size: 0.9rem;
+                color: #6b7280;
+            }
+
+            .card span {
+                display: block;
+                margin-top: 8px;
+                font-weight: 600;
+                font-size: 0.85rem;
+            }
+
+        footer {
+            background-color: #cce6ff;
+            padding: 30px 5%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            font-size: 0.95rem;
+            color: #1f2937;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #374151;
+            text-decoration: none;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .footer-section em {
+            display: block;
+            margin-top: 8px;
+            color: #555;
+        }
+
+        .footer-section.contact p {
+            font-style: italic;
+        }
+
+        .social-icons {
+            margin-top: 12px;
+        }
+
+            .social-icons span {
+                display: block;
+                font-weight: 600;
+                margin-bottom: 8px;
+                font-size: 1.1rem;
+            }
+
+            .social-icons a {
+                margin-right: 10px;
+                display: inline-block;
+                background-color: transparent;
+            }
+
+            .social-icons img {
+                width: 28px;
+                height: 28px;
+                filter: grayscale(100%);
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Global Public Speaking Club</h1>
+        <nav>
+            <a href="#">Home</a>
+            <span class="separator">|</span>
+            <a href="#">About</a>
+            <span class="separator">|</span>
+            <a href="#">Activities</a>
+            <span class="separator">|</span>
+            <a href="#">Resources</a>
+            <span class="separator">|</span>
+            <a href="#" class="underline">Community</a>
+            <span class="separator">|</span>
+            <a href="#" class="login">Login</a>
+            <a href="#" class="register">Register</a>
+            <button class="flag-button">
+                <img src="https://flagcdn.com/w40/us.png" alt="English">
+            </button>
+        </nav>
+    </header>
+
+    <section class="main-section">
+        <img src="https://static.wixstatic.com/media/120293_c53d89e528854d4ab71be8a07063f94a~mv2.png/v1/fill/w_264,h_199,fp_0.50_0.50,q_95,enc_avif,quality_auto/120293_c53d89e528854d4ab71be8a07063f94a~mv2.webp " alt="Weekly Discussion Main">
+        <div class="info">
+            <h2>Weekly Discussion: Overcoming Stage Fright</h2>
+            <p><strong>Community Forum</strong></p>
+            <p>June 10, 2024</p>
+            <p>Join fellow speakers as they share their personal experiences and proven strategies for conquering presentation anxiety. This week's discussion features tips from both beginners and seasoned speakers.</p>
+            <button>Join Discussion</button>
+            <p><strong>47 active members</strong></p>
+        </div>
+    </section>
+
+    <section class="topics">
+        <h3>Related Community Topics</h3>
+        <!-- Empty container to load topics dynamically -->
+        <div class="cards" id="topics-container"></div>
+    </section>
+
+    <footer>
+        <div class="footer-section">
+            <h4>Global Public Speaking Club</h4>
+            <em>Empowering voices. Connecting the world.</em>
+            <img class="logo" src="https://i.imghippo.com/files/pwO2415cdc.png" alt="GPS Club Logo">
+        </div>
+        <div class="footer-section" style="text-align:center;">
+            <h4>Quick Links</h4>
+            <a href="#">About</a>
+            <a href="#">Activities</a>
+            <a href="#">Resources</a>
+            <a href="#">Community</a>
+        </div>
+
+        <div class="footer-section contact">
+            <h4>Contact Us</h4>
+            <p>Email: support@gpsclub.org</p>
+            <p>Location: 26 Voice Tower, Innovation Park,<br>Dubai Knowledge Village, UAE</p>
+            <p>Phone: +971 4 123 4567</p>
+            <p>Support Hours: Sunday – Thursday, 9:00 AM – 5:00 PM</p>
+            <div class="social-icons">
+                <span>Stay Connected</span>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png" alt="Facebook"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script to load topics dynamically -->
+    <script>
+        async function loadTopics() {
+            try {
+                const response = await fetch('http://localhost:5000/api/topics'); // Change URL if needed
+                if (!response.ok) throw new Error('Failed to fetch topics');
+
+                const topics = await response.json();
+                const container = document.getElementById('topics-container');
+                container.innerHTML = ''; // Clear any existing content
+
+                topics.forEach(topic => {
+                    const card = document.createElement('a');
+                    card.href = "#";  // Update if you have topic links
+                    card.className = "card";
+
+                    card.innerHTML = `
+                <img src="${topic.imageUrl}" alt="${topic.title}">
+                <div class="content">
+                  <h4>${topic.title}</h4>
+                  <p>${topic.description}</p>
+                  <span>${topic.posts} posts</span>
+                </div>
+              `;
+
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading topics:', error);
+                const container = document.getElementById('topics-container');
+                container.innerHTML = `<p style="color:red;">Failed to load topics.</p>`;
+            }
+        }
+
+        // Load topics when page loads
+        loadTopics();
+    </script>
+
+</body>
+</html>

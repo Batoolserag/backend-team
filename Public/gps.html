@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Public Speaking Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* All your previous styles remain the same... */
+        /* ... (shortened here to save space) ... */
+    </style>
+</head>
+<body>
+    <header class="custom-header">
+        <h1>Global Public Speaking Club</h1>
+        <nav>
+            <a href="#">Home</a>
+            <span class="separator">|</span>
+            <a href="#" class="underline">About</a>
+            <span class="separator">|</span>
+            <a href="#">Activities</a>
+            <span class="separator">|</span>
+            <a href="#">Resources</a>
+            <span class="separator">|</span>
+            <a href="#">Community</a>
+            <span class="separator">|</span>
+            <a href="#" class="login">Login</a>
+            <a href="#" class="register">Register</a>
+            <button class="flag-button">
+                <img src="https://flagcdn.com/w40/us.png" alt="English">
+            </button>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <img src="https://poorttaal.nl/wp-content/uploads/2017/12/GEP17042_website_beelden-1200x500px2.jpg" alt="Microphone">
+        <h2>About GPS Club</h2>
+    </div>
+
+    <section class="section">
+        <h3>Who We Are</h3>
+        <p>GPS Club (Global Public Speaking Club) is an online platform dedicated to helping individuals grow into confident, impactful speakers...</p>
+        <div class="divider"></div>
+
+        <h3>What We Offer</h3>
+        <p>At GPS Club, we offer a supportive space to grow as a speaker. Members can submit speeches, receive constructive feedback...</p>
+        <div class="divider"></div>
+
+        <h3>Why It Matters</h3>
+        <p>We believe public speaking is more than a skill — it’s a pathway to confidence, connection, and leadership...</p>
+        <div class="divider"></div>
+
+        <h3>Meet the Team</h3>
+        <p>We’re a passionate, diverse group working together to make GPS Club the best it can be</p>
+
+        <div class="team" id="team-container">
+            <!-- Team members will be injected here by JS -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-section">
+            <h4>Global Public Speaking Club</h4>
+            <em>Empowering voices. Connecting the world.</em>
+            <img class="logo" src="https://i.imghippo.com/files/pwO2415cdc.png" alt="GPS Club Logo">
+        </div>
+        <div class="footer-section" style="text-align:center;">
+            <h4>Quick Links</h4>
+            <a href="#">About</a>
+            <a href="#">Activities</a>
+            <a href="#">Resources</a>
+            <a href="#">Community</a>
+        </div>
+        <div class="footer-section contact">
+            <h4>Contact Us</h4>
+            <p>Email: support@gpsclub.org</p>
+            <p>Location: 26 Voice Tower, Innovation Park,<br>Dubai Knowledge Village, UAE</p>
+            <p>Phone: +971 4 123 4567</p>
+            <p>Support Hours: Sunday – Thursday, 9:00 AM – 5:00 PM</p>
+            <div class="social-icons">
+                <span>Stay Connected</span>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png" alt="Facebook"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ✅ Script to fetch team data from the backend -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const teamContainer = document.getElementById('team-container');
+
+      fetch('http://localhost:5000/api/team')
+        .then(response => response.json())
+        .then(data => {
+          teamContainer.innerHTML = ''; // Clear any placeholders
+
+          data.forEach(member => {
+            const card = document.createElement('div');
+            card.className = 'member';
+            card.innerHTML = `
+              <img src="${member.photo}" alt="${member.name}">
+              <h4>${member.name}</h4>
+              <p>${member.title}</p>
+            `;
+            teamContainer.appendChild(card);
+          });
+        })
+        .catch(error => {
+          teamContainer.innerHTML = '<p style="color: red;">Failed to load team data.</p>';
+          console.error('Error fetching team:', error);
+        });
+    });
+    </script>
+</body>
+</html>
